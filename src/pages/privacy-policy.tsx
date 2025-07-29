@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -81,64 +83,68 @@ const PrivacyPolicy: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 flex items-center justify-center py-32 px-2">
-      <motion.div
-        className="w-full max-w-3xl mx-auto px-6 py-12 rounded-2xl shadow-2xl bg-white/5 backdrop-blur-md border border-white/10"
-        initial={{ opacity: 0, scale: 0.95, y: 40 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-      >
-        <h1 className="text-3xl font-bold mb-6 text-pink-400">Privacy Policy</h1>
-        <AnimatePresence>
-          {accepted === null && sections.map((section, i) => (
-            <motion.section
-              key={section.title}
-              className="mb-6"
-              custom={i}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={sectionVariants}
-            >
-              <h2 className="text-xl font-semibold mb-2 text-purple-300">{section.title}</h2>
-              {section.content}
-            </motion.section>
-          ))}
-        </AnimatePresence>
-        <div className="text-xs text-white/50 mt-8 mb-4">Last updated: {new Date().toLocaleDateString()}</div>
-        {/* Accept/Decline Buttons or Thank You Message */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          {accepted === null && (
-            <>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-8 py-3 rounded-lg shadow hover:from-purple-600 hover:to-pink-500 transition-all"
-                onClick={handleAccept}
+    <div className="min-h-screen flex flex-col bg-black">
+      <Navbar />
+      <div className="flex-1 flex items-center justify-center py-16 px-2">
+        <motion.div
+          className="w-full max-w-2xl mx-auto px-6 py-8 rounded-2xl shadow-2xl bg-white text-black border border-white/10 relative"
+          initial={{ x: '-100vw', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+        >
+          <h1 className="text-3xl font-bold mb-6 text-pink-400">Privacy Policy</h1>
+          <AnimatePresence>
+            {accepted === null && sections.map((section, i) => (
+              <motion.section
+                key={section.title}
+                className="mb-6"
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={sectionVariants}
               >
-                Accept
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-gradient-to-r from-gray-700 to-indigo-900 text-white font-semibold px-8 py-3 rounded-lg shadow hover:from-indigo-900 hover:to-gray-700 transition-all border border-white/20"
-                onClick={handleDecline}
+                <h2 className="text-xl font-semibold mb-2 text-purple-300">{section.title}</h2>
+                {section.content}
+              </motion.section>
+            ))}
+          </AnimatePresence>
+          <div className="text-xs text-gray-500 mt-8 mb-4">Last updated: {new Date().toLocaleDateString()}</div>
+          {/* Accept/Decline Buttons or Thank You Message */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            {accepted === null && (
+              <>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-8 py-3 rounded-lg shadow hover:from-purple-600 hover:to-pink-500 transition-all"
+                  onClick={handleAccept}
+                >
+                  Accept
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-gradient-to-r from-gray-700 to-indigo-900 text-white font-semibold px-8 py-3 rounded-lg shadow hover:from-indigo-900 hover:to-gray-700 transition-all border border-white/20"
+                  onClick={handleDecline}
+                >
+                  Decline
+                </motion.button>
+              </>
+            )}
+            {accepted === true && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-400 text-lg font-semibold text-center"
               >
-                Decline
-              </motion.button>
-            </>
-          )}
-          {accepted === true && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-green-400 text-lg font-semibold text-center"
-            >
-              Thank you for accepting our privacy policy!
-            </motion.div>
-          )}
-        </div>
-      </motion.div>
+                Thank you for accepting our privacy policy!
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
+      </div>
+      {/* <Footer /> */}
     </div>
   );
 };
