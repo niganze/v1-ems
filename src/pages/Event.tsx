@@ -27,16 +27,16 @@ function HeroImageSlider() {
       <img
         src={heroImages[current]}
         alt="Event Hero"
-        className="absolute inset-0 w-full h-full object-cover z-0 transition-all duration-700"
+        className="absolute inset-0 z-0 object-cover w-full h-full transition-all duration-700"
         style={{ filter: 'brightness(0.7)' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-violet-900/80 z-10" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-violet-900/80" />
       {/* Amazing Content Overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg mb-4 text-center animate-fade-in-up">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4">
+        <h1 className="mb-4 text-2xl font-extrabold text-center text-white md:text-3xl drop-shadow-lg animate-fade-in-up">
           Experience the Magic of Every Event
         </h1>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl text-center drop-shadow-md animate-fade-in-up delay-200">
+        <p className="max-w-2xl text-lg text-center delay-200 md:text-xl text-white/90 drop-shadow-md animate-fade-in-up">
           Discover unforgettable moments, connect with inspiring people, and celebrate life’s best occasions with EMS Rwanda. Your next amazing experience starts here.
         </p>
       </div>
@@ -62,13 +62,6 @@ function getYoutubeId(url: string) {
   return match ? match[1] : '';
 }
 
-function isUpcoming(date: string) {
-  return new Date(date) >= new Date();
-}
-function isRecent(date: string) {
-  return new Date(date) < new Date();
-}
-
 export default function Event() {
   const [current, setCurrent] = useState(0);
   const total = events.length;
@@ -84,46 +77,32 @@ export default function Event() {
   }, [total]);
 
   return (
-    <div className="min-h-screen bg-black px-0 py-0">
+    <div className="min-h-screen px-0 py-0 bg-black">
       {/* Hero Section in Brand Values Style */}
       <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         <img
           src={HomeEvent1}
           alt="Event Hero"
-          className="absolute inset-0 w-full h-full object-cover z-0 transition-all duration-700"
+          className="absolute inset-0 z-0 object-cover w-full h-full transition-all duration-700"
           style={{ filter: 'brightness(0.5)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/80 z-10" />
-        <div className="relative z-20 flex flex-col justify-center h-full w-full max-w-7xl mx-auto px-6">
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-black/80 via-black/70 to-black/80" />
+        <div className="relative z-20 flex flex-col justify-center w-full h-full px-6 mx-auto max-w-7xl">
           <span className="text-2xl md:text-3xl font-bold text-[#FFB347] mb-4 tracking-widest">OUR EVENTS</span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-extrabold text-white leading-tight mb-8 max-w-5xl">
+          <h1 className="max-w-5xl mb-8 font-serif text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl">
             Experience the Magic of Every Event, <br />
             Creating Unforgettable Moments, <br />
             Inspiring Connections, <br />
             Celebrating Life’s Best Occasions.
           </h1>
-          <p className="text-lg md:text-2xl text-white/90 max-w-3xl font-light">
+          <p className="max-w-3xl text-lg font-light md:text-2xl text-white/90">
             Discover unforgettable moments, connect with inspiring people, and celebrate life’s best occasions with EMS Rwanda. Your next amazing experience starts here.
           </p>
         </div>
       </section>
       {/* Animated 3D Event Card Slider */}
-      <div className="max-w-4xl mx-auto w-full flex flex-col items-center gap-16 py-16 px-4">
+      <div className="flex flex-col items-center w-full max-w-4xl gap-16 px-4 py-16 mx-auto">
         <div className="relative w-full flex items-center justify-center min-h-[600px]">
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white rounded-full p-3 shadow-lg focus:outline-none"
-            aria-label="Previous Event"
-          >
-            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white rounded-full p-3 shadow-lg focus:outline-none"
-            aria-label="Next Event"
-          >
-            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-          </button>
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={current}
@@ -134,8 +113,8 @@ export default function Event() {
               className="w-full"
               style={{ perspective: 1200 }}
             >
-              <div className="bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-violet-900/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col items-center p-0">
-                <div className="w-full aspect-video bg-black">
+              <div className="flex flex-col items-center p-0 overflow-hidden shadow-2xl bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-violet-900/80 rounded-3xl">
+                <div className="w-full bg-black aspect-video">
                   <iframe
                     src={`https://www.youtube.com/embed/${getYoutubeId(events[current].video)}`}
                     title={events[current].title}
@@ -144,13 +123,13 @@ export default function Event() {
                     allowFullScreen
                   ></iframe>
                 </div>
-                <div className="w-full flex flex-col items-center px-8 py-8">
-                  <h2 className="text-3xl md:text-5xl font-serif font-extrabold text-white mb-4 text-center">{events[current].title}</h2>
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
-                    <span className="text-base md:text-lg text-emsGreen font-semibold">{events[current].date}</span>
-                    <span className="text-white/80 text-lg">Location: <span className="font-semibold text-white">{events[current].location}</span></span>
+                <div className="flex flex-col items-center w-full px-8 py-8">
+                  <h2 className="mb-4 font-serif text-3xl font-extrabold text-center text-white md:text-5xl">{events[current].title}</h2>
+                  <div className="flex flex-col items-center justify-center gap-4 mb-4 md:flex-row">
+                    <span className="text-base font-semibold md:text-lg text-emsGreen">{events[current].date}</span>
+                    <span className="text-lg text-white/80">Location: <span className="font-semibold text-white">{events[current].location}</span></span>
                   </div>
-                  <p className="text-white/90 text-lg md:text-xl text-center max-w-2xl mb-2 font-light">{events[current].desc}</p>
+                  <p className="max-w-2xl mb-2 text-lg font-light text-center text-white/90 md:text-xl">{events[current].desc}</p>
                 </div>
               </div>
             </motion.div>
