@@ -13,7 +13,7 @@ import EventsDashboard from './dashboard/pages/events';
 import OurWorksDashboard from './dashboard/pages/ourworks';
 import Profile from './dashboard/pages/profile';
 import SettingsDashboard from './dashboard/pages/settings';
-import NewsDashboard from './dashboard/pages/news';
+import NewsDashboard from './dashboard/pages/NewsDashboard';
 import PrivacyPolicy from './pages/privacy-policy';
 import TestimonialsDashboard from './dashboard/pages/testimonials';
 import PromotionDashboard from './dashboard/pages/promotion';
@@ -28,7 +28,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="events" element={<Event />} />
-          <Route path="news" element={<News />} />
+          <Route path="news" element={<NewsDashboard />} />
           <Route path="contact" element={<Contact />} />
           <Route path="/ourworks" element={<OurWorks />} />
           <Route path="/singlework" element={<SingleWork />} />
