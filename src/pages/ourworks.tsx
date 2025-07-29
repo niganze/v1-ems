@@ -23,8 +23,6 @@ export default function OurWorks() {
         </div>
       </section>
       <ThreeDSlider />
-      {/* Modern Section Header */}
-      {/* Cards grid would follow here */}
     </>
   );
 } 

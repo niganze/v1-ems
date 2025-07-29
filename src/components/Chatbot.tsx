@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import bgImage from '../assets/Home_event5.jpg'; 
 
 const demoResponses: { [key: string]: string } = {
   'services': 'We offer event planning, live streaming, hybrid events, conferences, and workshops.',
@@ -50,7 +51,7 @@ const Chatbot: React.FC = () => {
     <>
       {/* Floating Button */}
       <button
-        className="fixed bottom-24 right-10 z-50 bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none"
+        className="fixed z-50 flex items-center justify-center text-white transition-all duration-300 rounded-full shadow-2xl bottom-24 right-10 bg-gradient-to-br from-pink-500 to-purple-600 w-14 h-14 hover:scale-110 focus:outline-none"
         onClick={() => setOpen(true)}
         aria-label="Open chatbot"
         style={{ display: open ? 'none' : 'flex' }}
@@ -62,11 +63,27 @@ const Chatbot: React.FC = () => {
           <path d="M15 9h.01" />
         </svg>
       </button>
+
       {!open && (
-        <span className="fixed bottom-40 right-10 text-xs bg-black/70 text-white px-2 py-1 rounded shadow-lg">
+        <span className="fixed px-2 py-1 text-xs text-white rounded shadow-lg bottom-40 right-10 bg-black/70">
           Chat with us
         </span>
       )}
+
+
+      {open && (
+        <div
+          className="fixed bottom-6 right-6 z-40 w-80 max-w-[95vw] h-[500px] rounded-2xl overflow-hidden"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.25,
+            pointerEvents: 'none'
+          }}
+        />
+      )}
+
       {/* Chat Window */}
       <AnimatePresence>
         {open && (
@@ -79,28 +96,25 @@ const Chatbot: React.FC = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
-              <span className="font-bold text-pink-400 text-lg">EMS Chatbot</span>
+              <span className="text-lg font-bold text-pink-400">EMS Chatbot</span>
               <button
-                className="text-white/70 hover:text-pink-400 transition-all text-xl font-bold"
+                className="text-xl font-bold transition-all text-white/70 hover:text-pink-400"
                 onClick={() => setOpen(false)}
                 aria-label="Close chatbot"
               >
                 ×
               </button>
             </div>
+
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2 bg-transparent" style={{ minHeight: 220 }}>
+            <div className="flex-1 px-4 py-3 space-y-2 overflow-y-auto bg-transparent" style={{ minHeight: 220 }}>
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={
-                    msg.from === 'bot'
-                      ? 'flex items-start gap-2'
-                      : 'flex items-end justify-end gap-2'
-                  }
+                  className={msg.from === 'bot' ? 'flex items-start gap-2' : 'flex items-end justify-end gap-2'}
                 >
                   {msg.from === 'bot' && (
-                    <span className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold">E</span>
+                    <span className="flex items-center justify-center w-8 h-8 font-bold text-white rounded-full bg-gradient-to-br from-pink-500 to-purple-600">E</span>
                   )}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -119,11 +133,12 @@ const Chatbot: React.FC = () => {
               ))}
               <div ref={messagesEndRef} />
             </div>
+
             {/* Input */}
-            <form onSubmit={handleSend} className="flex items-center gap-2 px-4 py-3 border-t border-white/10 bg-transparent">
+            <form onSubmit={handleSend} className="flex items-center gap-2 px-4 py-3 bg-transparent border-t border-white/10">
               <input
                 type="text"
-                className="flex-1 px-3 py-2 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="flex-1 px-3 py-2 text-white rounded-lg bg-white/10 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400"
                 placeholder="Type your message..."
                 value={input}
                 onChange={e => setInput(e.target.value)}
@@ -132,7 +147,7 @@ const Chatbot: React.FC = () => {
               />
               <button
                 type="submit"
-                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-500 transition-all"
+                className="px-4 py-2 font-semibold text-white transition-all rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500"
                 disabled={!input.trim()}
               >
                 Send
@@ -145,4 +160,4 @@ const Chatbot: React.FC = () => {
   );
 };
 
-export default Chatbot; 
+export default Chatbot;
