@@ -45,39 +45,39 @@ export default function SingleWork() {
 
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 px-4 py-36"
+      className="flex flex-col items-center min-h-screen px-4 bg-gradient-to-br fromet-90 py-36"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
       {/* Cover Image */}
-      <div className="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden mb-8 shadow-lg">
-        <img src={coverImg} alt="cover" className="w-full h-64 md:h-96 object-cover object-center" />
+      <div className="w-full max-w-5xl mx-auto mb-8 overflow-hidden shadow-lg rounded-2xl">
+        <img src={coverImg} alt="cover" className="object-cover object-center w-full h-64 md:h-96" />
       </div>
       {/* Title, Year, Location, Services */}
-      <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-8 mb-12 items-start">
+      <div className="flex flex-col items-start w-full max-w-5xl gap-8 mx-auto mb-12 md:flex-row">
         <div className="flex-1">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-2">MoMotima Campaign Launch</h1>
+          <h1 className="mb-2 text-3xl font-extrabold text-white md:text-5xl">MoMotima Campaign Launch</h1>
           <div className="flex items-center gap-4 mb-2">
-            <span className="text-lg text-cyan-400 font-bold">2022</span>
-            <span className="text-white/80 text-base">MTN Headquarters, Nyarutarama</span>
+            <span className="text-lg font-bold text-cyan-400">2022</span>
+            <span className="text-base text-white/80">MTN Headquarters, Nyarutarama</span>
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
             {services.map(s => (
-              <span key={s} className="bg-cyan-400/10 text-cyan-300 px-3 py-1 rounded-full text-sm font-semibold border border-cyan-400/30">{s}</span>
+              <span key={s} className="px-3 py-1 text-sm font-semibold border rounded-full bg-cyan-400/10 text-cyan-300 border-cyan-400/30">{s}</span>
             ))}
           </div>
         </div>
-        <div className="flex-1 flex justify-center items-center">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-cyan-400/30 bg-black/20 w-full max-w-xs">
+        <div className="flex items-center justify-center flex-1">
+          <div className="w-full max-w-xs overflow-hidden border-4 shadow-2xl rounded-2xl border-cyan-400/30 bg-black/20">
             <img src={mainImg} alt="main event" className="object-cover w-full h-64" />
           </div>
         </div>
       </div>
       {/* Gallery */}
       <div className="w-full max-w-5xl mx-auto mt-8">
-        <h2 className="text-2xl font-bold text-white mb-6">Event Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-3 gap-6">
+        <h2 className="mb-6 text-2xl font-bold text-white">Event Gallery</h2>
+        <div className="grid grid-cols-2 grid-rows-3 gap-6 md:grid-cols-4">
           {gallery.map((g, idx) => (
             <motion.div
               key={g.img}
@@ -91,9 +91,9 @@ export default function SingleWork() {
               onClick={() => { setModalIdx(idx); setModalOpen(true); }}
               style={{ minHeight: 120 }}
             >
-              <img src={g.img} alt={g.text} className="object-cover w-full h-full group-hover:opacity-80 transition duration-300" />
+              <img src={g.img} alt={g.text} className="object-cover w-full h-full transition duration-300 group-hover:opacity-80" />
               <motion.div
-                className="absolute bottom-0 left-0 w-full bg-black/70 text-cyan-300 text-center py-2 text-base font-semibold translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                className="absolute bottom-0 left-0 w-full py-2 text-base font-semibold text-center transition-transform duration-300 translate-y-full bg-black/70 text-cyan-300 group-hover:translate-y-0"
                 initial={false}
                 animate={{ y: 0 }}
               >
@@ -114,7 +114,7 @@ export default function SingleWork() {
             onClick={() => setModalOpen(false)}
           >
             <motion.div
-              className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 rounded-2xl shadow-2xl p-4 flex flex-col items-center"
+              className="relative flex flex-col items-center p-4 shadow-2xl bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 rounded-2xl"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -122,9 +122,9 @@ export default function SingleWork() {
               onClick={e => e.stopPropagation()}
             >
               <img src={gallery[modalIdx].img} alt={gallery[modalIdx].text} className="w-[80vw] max-w-2xl h-[60vh] object-cover rounded-xl mb-4" />
-              <div className="text-cyan-300 text-lg font-semibold mb-2">{gallery[modalIdx].text}</div>
+              <div className="mb-2 text-lg font-semibold text-cyan-300">{gallery[modalIdx].text}</div>
               <button
-                className="mt-2 px-6 py-2 rounded bg-cyan-400 text-white font-bold hover:bg-cyan-500 transition"
+                className="px-6 py-2 mt-2 font-bold text-white transition rounded bg-cyan-400 hover:bg-cyan-500"
                 onClick={() => setModalOpen(false)}
               >
                 Close

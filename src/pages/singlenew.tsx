@@ -44,7 +44,7 @@ const related = [
 export default function SingleNew() {
   return (
     <motion.section
-      className="min-h-screen flex flex-col items-center bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 px-4 py-36"
+      className="min-h-screen flex flex-col items-center bg-emsBlack px-4 py-36"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

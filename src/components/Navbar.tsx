@@ -10,13 +10,17 @@ const navLinks = [
   { name: 'Our Works', to: '/ourworks' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onUserInteraction }: { onUserInteraction: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    onUserInteraction(); // trigger music
+  };
+
   return (
     <header className="fixed top-0 left-0 z-50 w-full transition-all duration-300 bg-transparent">
       <div className="flex items-center justify-between px-4 md:px-8">
-        {/* Logo */}
         <div className="flex items-center flex-shrink-0">
           <img 
             src={logo} 
@@ -24,14 +28,15 @@ export default function Navbar() {
             className="object-contain w-16 h-16 transition-all duration-300 md:h-28 md:w-28" 
           />
         </div>
-        
-        {/* Desktop Nav Links */}
+
+        {/* Desktop Nav */}
         <nav className="absolute hidden transform -translate-x-1/2 left-1/2 md:flex">
           <ul className="flex gap-8 lg:gap-10">
             {navLinks.map(link => (
               <li key={link.name}>
-                <Link 
-                  to={link.to} 
+                <Link
+                  to={link.to}
+                  onClick={handleLinkClick}
                   className="relative text-base font-bold tracking-wide transition-colors duration-300 text-emsYellow lg:text-lg hover:text-emsPurple group"
                 >
                   {link.name}
@@ -41,7 +46,8 @@ export default function Navbar() {
             ))}
           </ul>
         </nav>
-        {/* Hamburger Icon (Mobile) */}
+
+        {/* Hamburger Icon */}
         <button
           className="flex items-center justify-center p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emsYellow"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -63,7 +69,7 @@ export default function Navbar() {
           </svg>
         </button>
       </div>
-      
+
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 z-40 transition-all duration-300 md:hidden ${
@@ -79,7 +85,7 @@ export default function Navbar() {
         onClick={() => setMenuOpen(false)}
         aria-hidden="true"
       />
-      
+
       {/* Mobile Menu */}
       <nav
         className={`fixed top-0 right-0 w-4/5 max-w-xs h-full bg-gradient-to-b from-indigo-900 via-purple-900 to-violet-900 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
@@ -87,7 +93,6 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col h-full p-6 pt-20">
-          {/* Mobile Menu Header */}
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl font-bold text-white">Menu</h2>
             <button
@@ -100,15 +105,15 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
-          
-          {/* Mobile Navigation Links */}
+
+          {/* Mobile Nav Links */}
           <ul className="flex flex-col gap-6 mb-8">
             {navLinks.map((link, index) => (
               <li key={link.name} className="transition-all duration-300 transform" style={{ transitionDelay: `${index * 50}ms` }}>
                 <Link
                   to={link.to}
+                  onClick={handleLinkClick}
                   className="block py-2 text-lg font-bold tracking-wide transition-colors duration-300 border-b text-emsYellow hover:text-emsPurple border-white/10 hover:border-emsPurple/50"
-                  onClick={() => setMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
