@@ -1,4 +1,8 @@
 import { useEffect, useRef } from "react";
+import ModernPartners from "../components/Partners";
+import PromoEvents from "../components/promoevents";
+import BrandStory from "../components/BrandStory";
+import { StatsScene } from "../components/StatsScene";
 
 const sections = [
   { title: "Home", text: "Welcome to my futuristic portfolio." },
@@ -30,6 +34,7 @@ export default function OrbitalCards() {
   }, []);
 
   return (
+    <>
     <div
       className="w-full overflow-x-hidden bg-black"
       style={{ 
@@ -166,7 +171,10 @@ export default function OrbitalCards() {
               top: "50%", 
               transform: "translate(-50%, -50%)"
             }}
-          ></div>
+          >
+            <PromoEvents/>
+          </div>
+          
 
           {/* Add enhanced keyframes and styles */}
           <style>{`
@@ -462,7 +470,12 @@ export default function OrbitalCards() {
             }
           `}</style>
         </div>
+        
       </div>
+      
     </div>
+    <ModernPartners/>
+    <BrandStory/>
+    </>
   );
 }
