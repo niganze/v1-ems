@@ -34,13 +34,13 @@ export default function Layout() {
   }, [hasInteracted, playAudio]);
 
   // Fallback for additional clicks
-  useEffect(() => {
-    if (hasInteracted) {
-      const clickPlayFallback = () => playAudio();
-      window.addEventListener('click', clickPlayFallback);
-      return () => window.removeEventListener('click', clickPlayFallback);
-    }
-  }, [hasInteracted, playAudio]);
+  // useEffect(() => {
+  //   if (hasInteracted) {
+  //     const clickPlayFallback = () => playAudio();
+  //     window.addEventListener('click', clickPlayFallback);
+  //     return () => window.removeEventListener('click', clickPlayFallback);
+  //   }
+  // }, [hasInteracted, playAudio]);
 
   return (
     <div className="z-50 flex flex-col min-h-screen">
