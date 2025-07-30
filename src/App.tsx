@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import Contact from './pages/Contact';
-import News from './pages/News';
+// import News from './pages/News';
 import Event from './pages/Event';
 import OurWorks from './pages/ourworks';
 import SingleWork from './pages/singlework';
