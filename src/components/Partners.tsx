@@ -1,14 +1,21 @@
 import { useEffect, useRef } from 'react';
+import qwcLogo from '../assets/partner_logos/mock.avif';
+import rivieraLogo from '../assets/partner_logos/mock.avif';
+import minibusLogo from '../assets/partner_logos/mock.avif';
+import virtualLogo from '../assets/partner_logos/mock.avif';
+import deliveryLogo from '../assets/partner_logos/mock.avif';
+import africanTourismLogo from '../assets/partner_logos/mock.avif';
+import oldMutualLogo from '../assets/partner_logos/mock.avif';
 
-// Partner logos data (you'll replace these with your actual imports)
+// Partner logos array
 const partnerLogos = [
-  { src: '/api/placeholder/120/60', alt: 'QWC', name: 'QWC' },
-  { src: '/api/placeholder/120/60', alt: 'Riviera', name: 'Riviera' },
-  { src: '/api/placeholder/120/60', alt: 'Minibus', name: 'Minibus' },
-  { src: '/api/placeholder/120/60', alt: 'Virtual', name: 'Virtual' },
-  { src: '/api/placeholder/120/60', alt: 'Delivery', name: 'Delivery' },
-  { src: '/api/placeholder/120/60', alt: 'African Tourism', name: 'African Tourism' },
-  { src: '/api/placeholder/120/60', alt: 'Old Mutual', name: 'Old Mutual' },
+  { src: qwcLogo, alt: 'QWC', name: 'QWC' },
+  { src: rivieraLogo, alt: 'Riviera', name: 'Riviera' },
+  { src: minibusLogo, alt: 'Minibus', name: 'Minibus' },
+  { src: virtualLogo, alt: 'Virtual', name: 'Virtual' },
+  { src: deliveryLogo, alt: 'Delivery', name: 'Delivery' },
+  { src: africanTourismLogo, alt: 'African Tourism', name: 'African Tourism' },
+  { src: oldMutualLogo, alt: 'Old Mutual', name: 'Old Mutual' },
 ];
 
 export default function ModernPartners() {
@@ -91,43 +98,38 @@ export default function ModernPartners() {
                 width: 'calc(200% + 2rem)',
               }}
             >
-              {/* First set */}
               {partnerLogos.map((logo, idx) => (
-                <div
-                  key={`first-${idx}`}
-                  className="flex-shrink-0 group relative"
-                >
-                  <div className="w-40 h-20 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 flex items-center justify-center p-4 group-hover:scale-110 group-hover:bg-white/10">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                    
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-                  </div>
-                </div>
-              ))}
-              
-              {/* Second set for seamless loop */}
-              {partnerLogos.map((logo, idx) => (
-                <div
-                  key={`second-${idx}`}
-                  className="flex-shrink-0 group relative"
-                >
-                  <div className="w-40 h-20 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 flex items-center justify-center p-4 group-hover:scale-110 group-hover:bg-white/10">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                    
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-                  </div>
-                </div>
-              ))}
+  <div
+    key={`first-${idx}`}
+    className="flex-shrink-0 group relative"
+  >
+    <div className="w-40 h-20 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden group-hover:scale-110 group-hover:bg-white/10">
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+      />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+    </div>
+  </div>
+))}
+
+{partnerLogos.map((logo, idx) => (
+  <div
+    key={`second-${idx}`}
+    className="flex-shrink-0 group relative"
+  >
+    <div className="w-40 h-20 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden group-hover:scale-110 group-hover:bg-white/10">
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+      />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+    </div>
+  </div>
+))}
+
             </div>
           </div>
         </div>
