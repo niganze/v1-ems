@@ -1,15 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Mock images - replace with your actual imports
-const heroImages = [
-  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1518623001395-125242310d0c?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1465056836041-7f43ac209b5e?w=800&h=600&fit=crop'
-];
+import { motion, AnimatePresence, easeOut } from 'framer-motion';
 
 const HomeEvent1 = 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&h=800&fit=crop';
 
@@ -19,7 +9,7 @@ const fadeInUp = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.8, ease: easeOut }
   }
 };
 
@@ -39,7 +29,7 @@ const slideInLeft = {
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.8, ease: easeOut }
   }
 };
 
@@ -48,7 +38,7 @@ const slideInRight = {
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.8, ease: easeOut }
   }
 };
 
@@ -57,56 +47,9 @@ const scaleIn = {
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6, ease: easeOut }
   }
 };
-
-function HeroImageSlider() {
-  const [current, setCurrent] = useState(0);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-      <motion.img
-        key={current}
-        src={heroImages[current]}
-        alt="Event Hero"
-        className="absolute inset-0 z-0 object-cover w-full h-full"
-        style={{ filter: 'brightness(0.7)' }}
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      />
-      <div className="absolute inset-0 z-10 bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-violet-900/80" />
-      
-      <motion.div 
-        className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 pt-16 md:pt-20"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h1 
-          className="mb-4 text-xl font-extrabold text-center text-white md:text-2xl lg:text-3xl drop-shadow-lg"
-          variants={fadeInUp}
-        >
-          Experience the Magic of Every Event
-        </motion.h1>
-        <motion.p 
-          className="max-w-2xl text-sm text-center md:text-base lg:text-lg text-white/90 drop-shadow-md"
-          variants={fadeInUp}
-        >
-          Discover unforgettable moments, connect with inspiring people, and celebrate life's best occasions with EMS Rwanda. Your next amazing experience starts here.
-        </motion.p>
-      </motion.div>
-    </section>
-  );
-}
 
 const events = [
   { title: 'Summer Music Festival', date: '2025-08-10', location: 'Kigali Arena', desc: 'Join us for a day of music, food, and fun with top artists and DJs.', video: 'ScMzIvxBSi4' },

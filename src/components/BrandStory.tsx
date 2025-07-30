@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import{ useState, useEffect, useRef } from 'react';
 
 const BrandStory = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [particleCount, setParticleCount] = useState(25);
   const sectionRef = useRef(null);
 
   // Use actual images
@@ -47,7 +46,7 @@ const BrandStory = () => {
   }, []);
 
   // Generate particles
-  const particles = Array.from({ length: particleCount }, (_, i) => ({
+  const particles = Array.from({ length: 25 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -182,12 +181,12 @@ const BrandStory = () => {
                       textShadow: '0 0 30px rgba(63, 169, 245, 0.3)'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.transform = 'scale(1.1) rotateY(10deg)';
-                      e.target.style.textShadow = '0 0 40px rgba(244, 114, 182, 0.8)';
+                      (e.target as HTMLElement).style.transform = 'scale(1.1) rotateY(10deg)';
+                      (e.target as HTMLElement).style.textShadow = '0 0 40px rgba(244, 114, 182, 0.8)';
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.transform = 'scale(1) rotateY(0deg)';
-                      e.target.style.textShadow = '0 0 30px rgba(63, 169, 245, 0.3)';
+                      (e.target as HTMLElement).style.transform = 'scale(1) rotateY(0deg)';
+                      (e.target as HTMLElement).style.textShadow = '0 0 30px rgba(63, 169, 245, 0.3)';
                     }}
                   >
                     {word}
@@ -310,7 +309,7 @@ const BrandStory = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(1deg); }
