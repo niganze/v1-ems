@@ -89,5 +89,4 @@ const PromoEvents = () => {
     </section>
   );
 };
-
 export default PromoEvents; 
