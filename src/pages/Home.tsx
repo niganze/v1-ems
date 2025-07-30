@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import ModernPartners from "../components/Partners";
 import PromoEvents from "../components/promoevents";
 import BrandStory from "../components/BrandStory";
-import { StatsScene } from "../components/StatsScene";
+
 
 const sections = [
   { title: "Home", text: "Welcome to my futuristic portfolio." },

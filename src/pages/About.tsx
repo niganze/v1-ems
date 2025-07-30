@@ -52,12 +52,6 @@ export default function About() {
   const [activeSection, setActiveSection] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [activeStat, setActiveStat] = useState(0);
-  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sectionsRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const teamRef = useRef<HTMLDivElement>(null);
-  const [isOrbitalMode, setIsOrbitalMode] = useState(true);
   const [sliderOffset, setSliderOffset] = useState(0);
   const SLIDE_INTERVAL = 30; // ms
   const SLIDE_STEP = 1; // px per interval
@@ -66,7 +60,6 @@ export default function About() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
       // Calculate which section is active based on scroll position
@@ -97,17 +90,6 @@ export default function About() {
     };
   }, []);
 
-  // Auto-slide effect for the 3D card slider
-  useEffect(() => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-    autoSlideRef.current = setInterval(() => {
-      setActiveStat((prev) => (prev + 1) % stats.length);
-    }, 4000);
-    return () => {
-      if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-    };
-  }, [stats.length]);
-
   // Endless sliding effect for the 3D card slider
   useEffect(() => {
     const interval = setInterval(() => {
@@ -115,17 +97,6 @@ export default function About() {
     }, SLIDE_INTERVAL);
     return () => clearInterval(interval);
   }, []);
-
-  // Handler for manual navigation (resets auto-slide)
-  const handleStatNav = (newIdx: number) => {
-    setActiveStat(newIdx);
-    if (autoSlideRef.current) {
-      clearInterval(autoSlideRef.current);
-      autoSlideRef.current = setInterval(() => {
-        setActiveStat((prev) => (prev + 1) % stats.length);
-      }, 4000);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
@@ -283,7 +254,7 @@ export default function About() {
       </section>
 
       {/* Enhanced Stats Section */}
-      <section ref={statsRef} className="scroll-section relative py-20 bg-gradient-to-r from-gray-900 to-black">
+      <section className="scroll-section relative py-20 bg-gradient-to-r from-gray-900 to-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black mb-8 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent relative">
@@ -343,7 +314,7 @@ export default function About() {
       </section>
 
       {/* Enhanced Team Section with Orbital Motion and Door Animation */}
-      <section ref={teamRef} className="scroll-section relative py-20 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
+      <section className="scroll-section relative py-20 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black mb-8 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent relative">

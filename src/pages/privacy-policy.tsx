@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -84,7 +82,6 @@ const PrivacyPolicy: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
-      <Navbar />
       <div className="flex-1 flex items-center justify-center py-16 px-2">
         <motion.div
           className="w-full max-w-2xl mx-auto px-6 py-8 rounded-2xl shadow-2xl bg-white text-black border border-white/10 relative"

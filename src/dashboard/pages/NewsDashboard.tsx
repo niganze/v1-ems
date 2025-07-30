@@ -104,7 +104,7 @@ const NewsDashboard = () => {
         <div
           key={item.id}
           data-index={index}
-          ref={(el) => (sectionRefs.current[index] = el)}
+          ref={(el) => { sectionRefs.current[index] = el; }}
           className="h-screen snap-start flex items-center justify-center bg-black bg-opacity-60 text-white p-8"
         >
           <div
