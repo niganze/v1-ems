@@ -271,25 +271,7 @@ const BrandStory = () => {
           >
             For 25 years, we have helped clients build effective global influence platforms to engage their audiences.
           </p>
-          
-          {/* Animated border */}
-          <div 
-            className="absolute inset-0 rounded-2xl pointer-events-none"
-            style={{
-              background: 'conic-gradient(from 0deg, transparent, #3FA9F5, transparent, #8B5CF6, transparent, #F472B6, transparent)',
-              padding: '1px',
-              animation: 'rotate-border 4s linear infinite'
-            }}
-          >
-            <div 
-              className="w-full h-full rounded-2xl"
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)'
-              }}
-            />
-          </div>
         </div>
-
         {/* Accent elements */}
         <div className="absolute bottom-8 left-8 flex items-center gap-6 z-10">
           <span 
