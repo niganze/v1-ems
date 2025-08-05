@@ -177,7 +177,9 @@ export default function Footer() {
               Subscribe
             </motion.button>
           </form>
-          <div className="mt-2 text-xs text-white/60">Subscribe to get the latest news and event updates.</div>
+<div className="mt-2 text-xs text-white/60 text-center">
+  Subscribe to get the latest news and event updates.
+</div>
         </motion.div>
 
         {/* Copyright */}
@@ -195,9 +197,6 @@ export default function Footer() {
           </a>
           <br />
           Copyright &copy;{new Date().getFullYear()} All rights reserved |
-          <span className="ml-2 text-transparent bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text">
-            This site is designed in The House of Kemmy
-          </span>
         </motion.div>
       </div>
 
