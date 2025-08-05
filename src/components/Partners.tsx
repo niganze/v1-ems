@@ -6,6 +6,8 @@ import virtualLogo from '../assets/partner_logos/mock.avif';
 import deliveryLogo from '../assets/partner_logos/mock.avif';
 import africanTourismLogo from '../assets/partner_logos/mock.avif';
 import oldMutualLogo from '../assets/partner_logos/mock.avif';
+import { Link } from 'react-router-dom';
+
 
 // Partner logos array
 const partnerLogos = [
@@ -169,15 +171,21 @@ export default function ModernPartners() {
 
         {/* Call to Action */}
         <div className="text-center mt-16 opacity-0 transform translate-y-8 transition-all duration-1000 ease-out" id="cta">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <span className="relative flex items-center gap-2">
-              Become a Partner
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/>
-              </svg>
-            </span>
-          </button>
+        <Link to="/brandstory">
+      <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span className="relative flex items-center gap-2">
+          Get our Partnership Kit
+          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </span>
+      </button>
+    </Link>
         </div>
       </div>
 

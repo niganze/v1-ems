@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import Contact from './pages/Contact';
-// import News from './pages/News';
 import Event from './pages/Event';
 import OurWorks from './pages/ourworks';
 import SingleWork from './pages/singlework';
@@ -19,6 +18,7 @@ import TestimonialsDashboard from './dashboard/pages/testimonials';
 import PromotionDashboard from './dashboard/pages/promotion';
 import Home from './pages/Home';
 import About from './pages/About';
+import PromoEvents from './components/promoevents';
 
 export default function App() {
   return (
@@ -34,6 +34,7 @@ export default function App() {
           <Route path="/singlework" element={<SingleWork />} />
           <Route path="/singlenew" element={<SingleNew />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/brandstory" element={<PromoEvents/>} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
