@@ -1,109 +1,143 @@
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import news1 from '../assets/news1.jpg';
-import news2 from '../assets/news2.jpg';
-import news3 from '../assets/new3.jpg';
-import news4 from '../assets/news4.jpg';
-import news5 from '../assets/news5.webp';
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const categories = [
-  'All',
-  'Awards',
-  'Hybrid Events',
-  'Partnerships',
-  'Sustainability',
-  'Product Launch',
-];
-
+import "../specialHelper/scrollbar.css"
 const news = [
   {
-    img: news1,
-    title: 'EMS Wins Best Event Production Award',
-    date: '2024-05-10',
-    desc: 'Event & Media Service Ltd. was honored with the Best Event Production Award at the Kigali Events Gala for outstanding creativity and execution.',
-    category: 'Awards',
+    id: 1,
+    title: 'Summer Party Extravaganza',
+    content: 'Join us for a night of music, dancing, and unforgettable memories at the annual summer party!',
+    date: '2025-07-29',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
   },
   {
-    img: news2,
-    title: 'Hybrid Events: The Future of Gatherings',
-    date: '2024-04-22',
-    desc: 'Discover how EMS is leading the way in hybrid event solutions, blending in-person and virtual experiences for maximum impact.',
-    category: 'Hybrid Events',
+    id: 2,
+    title: 'Carnival Night Show',
+    content: 'Experience the thrill of carnival games, live performances, and dazzling lights!',
+    date: '2025-07-28',
+    image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
   },
   {
-    img: news3,
-    title: 'EMS Partners with Global Tech Conference',
-    date: '2024-03-15',
-    desc: 'EMS provided full event management and media coverage for the Global Tech Conference, hosting over 2,000 attendees.',
-    category: 'Partnerships',
+    id: 3,
+    title: 'Gala Awards Evening',
+    content: 'Dress to impress and celebrate achievements at our glamorous gala awards night.',
+    date: '2025-07-27',
+    image: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=800&q=80',
   },
   {
-    img: news4,
-    title: 'Sustainable Event Practices at EMS',
-    date: '2024-02-28',
-    desc: 'Learn how EMS is implementing sustainable practices in event production, from eco-friendly materials to digital solutions.',
-    category: 'Sustainability',
-  },
-  {
-    img: news5,
-    title: 'Behind the Scenes: Major Product Launch',
-    date: '2024-01-10',
-    desc: 'A look at how EMS brought a major product launch to life with creative design, live streaming, and flawless logistics.',
-    category: 'Product Launch',
+    id: 4,
+    title: 'Live Concert Under the Stars',
+    content: 'Enjoy live music performances in an open-air setting with friends and family.',
+    date: '2025-07-26',
+    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
-export default function News() {
-  const navigate = useNavigate();
-  const [selected, setSelected] = React.useState('All');
-  const filteredNews = selected === 'All' ? news : news.filter(n => n.category === selected);
+const News = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [bgLoaded, setBgLoaded] = useState(true);
+  const [pulse, setPulse] = useState(false);
+
+  useEffect(() => {
+    setBgLoaded(false);
+    const img = new window.Image();
+    img.src = news[activeIndex].image;
+    img.onload = () => setBgLoaded(true);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    setPulse(false);
+    const interval = setInterval(() => {
+      setPulse(true);
+      setTimeout(() => setPulse(false), 700);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) {
+          const index = Number(visible.target.getAttribute('data-index'));
+          setActiveIndex(index);
+        }
+      },
+      { root: null, rootMargin: '0px', threshold: 0.6 }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.section
-      className="min-h-screen flex flex-col items-center bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 px-4 py-36"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+    <div
+      className="h-screen overflow-y-scroll snap-y snap-mandatory relative scrollbar-hide"
+      style={{
+        backgroundImage: bgLoaded ? `url(${news[activeIndex].image})` : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transition: 'background-image 0.8s cubic-bezier(0.4,0,0.2,1)',
+      }}
     >
-      <div className="max-w-6xl w-full mx-auto text-center mb-12">
-        <h2 className="uppercase tracking-widest text-emsWhite/80 text-lg font-semibold mb-2">Latest News</h2>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-emsWhite mb-2">News & Updates</h1>
-        <div className="w-24 h-1 bg-cyan-400 mx-auto mb-8" />
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              className={`px-6 py-2 rounded border-2 transition-all duration-200 font-semibold text-lg ${selected === cat ? 'border-cyan-400 text-cyan-400 bg-white/5' : 'border-transparent text-emsWhite/80 hover:text-cyan-400'}`}
-              onClick={() => setSelected(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
-        {filteredNews.map((item, idx) => (
-          <motion.div
-            key={item.title}
-            className="bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 rounded-2xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl group cursor-pointer"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.1, duration: 0.6 }}
-            whileHover={{ opacity: 0.85 }}
-            onClick={() => navigate('/singlenew')}
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 pointer-events-none z-0 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ background: 'rgba(0,0,0,0.5)' }}
+      />
+      <div
+        className={`absolute inset-0 z-0 transition-transform duration-[2500ms] ease-in-out ${
+          bgLoaded ? 'scale-105' : 'scale-100'
+        }`}
+        style={{
+          backgroundImage: bgLoaded ? `url(${news[activeIndex].image})` : undefined,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(0px)',
+          opacity: 0.2,
+        }}
+        aria-hidden="true"
+      />
+      {news.map((item, index) => (
+        <div
+          key={item.id}
+          data-index={index}
+          ref={(el) => { sectionRefs.current[index] = el; }}
+          className="h-screen snap-start flex items-center justify-center bg-black bg-opacity-60 text-white p-8"
+        >
+          <div
+            className={`max-w-2xl text-center mx-auto flex flex-col items-center transition-all duration-700 ${
+              index === activeIndex
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 -translate-y-8 scale-95 pointer-events-none'
+            } ${index === activeIndex && pulse ? 'animate-pulse' : ''}`}
           >
-            <div className="relative w-full h-56 overflow-hidden">
-              <img src={item.img} alt={item.title} className="object-cover w-full h-full group-hover:opacity-80 transition-opacity duration-300" />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-bold text-cyan-400 mb-2">{item.title}</h3>
-              <span className="text-xs text-emsWhite/60 mb-2">{item.date}</span>
-              <p className="text-emsWhite/80 text-base mb-2">{item.desc}</p>
-            </div>
-          </motion.div>
+            <h2 className="text-4xl font-bold mb-4">{item.title}</h2>
+            <p className="mb-4">{item.content}</p>
+            <span className="text-sm text-gray-300">{item.date}</span>
+          </div>
+        </div>
+      ))}
+
+      {/* Pagination Lines */}
+      <div className="fixed bottom-8 right-8 flex flex-row gap-4 items-end z-10 mr-20">
+        {news.map((_, i) => (
+          <div key={i} className="flex flex-col items-center">
+            {i === activeIndex && (
+              <span className="mb-1 text-white font-bold text-base drop-shadow-lg">{i + 1}</span>
+            )}
+            <div
+              className={`w-1 transition-all duration-300 rounded-sm ${
+                i === activeIndex ? 'h-14 bg-white' : 'h-8 bg-gray-400'
+              }`}
+            />
+          </div>
         ))}
       </div>
-    </motion.section>
+    </div>
   );
-} 
+};
+
+export default News;

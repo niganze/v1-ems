@@ -19,6 +19,7 @@ import PromotionDashboard from './dashboard/pages/promotion';
 import Home from './pages/Home';
 import About from './pages/About';
 import PromoEvents from './components/promoevents';
+import News from './pages/News';
 
 export default function App() {
   return (
@@ -28,7 +29,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="Event" element={<Event />} />
-          <Route path="news" element={<NewsDashboard />} />
+          <Route path="news" element={<News />} />
           <Route path="contact" element={<Contact />} />
           <Route path="/ourworks" element={<OurWorks />} />
           <Route path="/singlework" element={<SingleWork />} />
@@ -39,11 +40,11 @@ export default function App() {
         <Route path="login" element={<Login />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<HomeDashboard />} />
-          <Route path="eventsdashboard" element={<EventsDashboard />} />
-          <Route path="ourworksdashboard" element={<OurWorksDashboard />} />
-          <Route path="newsdashboard" element={<NewsDashboard />} />
-          <Route path="testimonialsdashboard" element={<TestimonialsDashboard />} />
-          <Route path="promotiondashboard" element={<PromotionDashboard />} />
+          <Route path="events" element={<EventsDashboard />} />
+          <Route path="ourworks" element={<OurWorksDashboard />} />
+          <Route path="newsdash" element={<NewsDashboard />} />
+          <Route path="testimonials" element={<TestimonialsDashboard />} />
+          <Route path="promotion" element={<PromotionDashboard />} />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<SettingsDashboard />} />
         </Route>

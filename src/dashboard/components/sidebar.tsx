@@ -38,7 +38,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       id: "news",
       label: "News",
       icon: <Newspaper className="h-5 w-5" />,
-      path: "/dashboard/news",
+      path: "/dashboard/newsdash",
     },
     {
       id: "testimonials",
