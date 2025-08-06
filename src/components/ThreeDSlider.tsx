@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Mock images for the slider
 const images = [
@@ -28,6 +29,7 @@ export default function ThreeDSlider() {
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     function animate(now: number) {
@@ -58,7 +60,15 @@ export default function ThreeDSlider() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-600 to-slate-900">
+    <div
+      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gray-600 to-slate-900"
+      style={{
+        backgroundImage: `url('/src/assets/work.avif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* Animated Background Elements */}
       <div 
         className="absolute inset-0 opacity-30"
@@ -102,11 +112,12 @@ export default function ThreeDSlider() {
           {images.map((src, i) => (
             <div
               key={i}
-              className="absolute w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-purple-500/50"
+              className="absolute w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-purple-500/50 cursor-pointer"
               style={{
                 transform: `rotateY(${(i) * (360 / SLIDE_COUNT)}deg) translateZ(${SLIDER_RADIUS}px)`,
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
               }}
+              onClick={() => navigate('/Event')}
             >
               <img 
                 src={src} 

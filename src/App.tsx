@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="events" element={<Event />} />
+          <Route path="Event" element={<Event />} />
           <Route path="news" element={<NewsDashboard />} />
           <Route path="contact" element={<Contact />} />
           <Route path="/ourworks" element={<OurWorks />} />
@@ -39,11 +39,11 @@ export default function App() {
         <Route path="login" element={<Login />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<HomeDashboard />} />
-          <Route path="events" element={<EventsDashboard />} />
-          <Route path="ourworks" element={<OurWorksDashboard />} />
-          <Route path="news" element={<NewsDashboard />} />
-          <Route path="testimonials" element={<TestimonialsDashboard />} />
-          <Route path="promotion" element={<PromotionDashboard />} />
+          <Route path="eventsdashboard" element={<EventsDashboard />} />
+          <Route path="ourworksdashboard" element={<OurWorksDashboard />} />
+          <Route path="newsdashboard" element={<NewsDashboard />} />
+          <Route path="testimonialsdashboard" element={<TestimonialsDashboard />} />
+          <Route path="promotiondashboard" element={<PromotionDashboard />} />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<SettingsDashboard />} />
         </Route>

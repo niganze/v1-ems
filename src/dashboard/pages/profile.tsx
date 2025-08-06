@@ -116,7 +116,7 @@ const Profile: React.FC = () => {
       onClick={() => setActiveTab(id)}
       className={`flex items-center gap-2 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
         activeTab === id
-          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+          ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-lg'
           : 'text-gray-600 hover:bg-gray-100'
       }`}
     >
@@ -126,7 +126,7 @@ const Profile: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
       <div className="max-w-4xl mx-auto">
         {/* Success Message */}
         {successMessage && (
@@ -145,13 +145,13 @@ const Profile: React.FC = () => {
 
         {/* Profile Tab */}
         {activeTab === 'profile' && (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 border border-gray-100">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 border border-gray-200">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Profile Information</h2>
+              <h2 className="text-2xl font-bold text-gray-700">Profile Information</h2>
               {!isEditing ? (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-200"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-lg hover:shadow-lg transition-all duration-200"
                 >
                   <Edit3 className="w-4 h-4" />
                   Edit Profile
@@ -178,95 +178,95 @@ const Profile: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Full Name</label>
                 {isEditing ? (
                   <input
                     type="text"
                     value={profileData.name}
                     onChange={(e) => handleProfileChange('name', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                   />
                 ) : (
                   <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <User className="w-4 h-4 text-gray-400" />
-                    <span>{profileData.name}</span>
+                    <User className="w-4 h-4 text-gray-500" />
+                    <span className="text-gray-700">{profileData.name}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Email</label>
                 {isEditing ? (
                   <input
                     type="email"
                     value={profileData.email}
                     onChange={(e) => handleProfileChange('email', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                   />
                 ) : (
                   <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <Mail className="w-4 h-4 text-gray-400" />
-                    <span>{profileData.email}</span>
+                    <Mail className="w-4 h-4 text-gray-500" />
+                    <span className="text-gray-700">{profileData.email}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Department</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Department</label>
                 {isEditing ? (
                   <input
                     type="text"
                     value={profileData.department}
                     onChange={(e) => handleProfileChange('department', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                   />
                 ) : (
                   <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <Globe className="w-4 h-4 text-gray-400" />
-                    <span>{profileData.department}</span>
+                    <Globe className="w-4 h-4 text-gray-500" />
+                    <span className="text-gray-700">{profileData.department}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Phone</label>
                 {isEditing ? (
                   <input
                     type="tel"
                     value={profileData.phone}
                     onChange={(e) => handleProfileChange('phone', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                   />
                 ) : (
                   <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <Smartphone className="w-4 h-4 text-gray-400" />
-                    <span>{profileData.phone}</span>
+                    <Smartphone className="w-4 h-4 text-gray-500" />
+                    <span className="text-gray-700">{profileData.phone}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Location</label>
                 {isEditing ? (
                   <input
                     type="text"
                     value={profileData.location}
                     onChange={(e) => handleProfileChange('location', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                   />
                 ) : (
                   <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <MapPin className="w-4 h-4 text-gray-400" />
-                    <span>{profileData.location}</span>
+                    <MapPin className="w-4 h-4 text-gray-500" />
+                    <span className="text-gray-700">{profileData.location}</span>
                   </div>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Join Date</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Join Date</label>
                 <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                  <Calendar className="w-4 h-4 text-gray-400" />
-                  <span>{new Date(profileData.joinDate).toLocaleDateString()}</span>
+                  <Calendar className="w-4 h-4 text-gray-500" />
+                  <span className="text-gray-700">{new Date(profileData.joinDate).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
@@ -275,18 +275,18 @@ const Profile: React.FC = () => {
 
         {/* Security Tab */}
         {activeTab === 'security' && (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 border border-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Security Settings</h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 border border-gray-200">
+            <h2 className="text-2xl font-bold text-gray-700 mb-6">Security Settings</h2>
             
             <form onSubmit={handlePasswordSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Current Password</label>
                 <div className="relative">
                   <input
                     type={showCurrentPassword ? 'text' : 'password'}
                     value={passwordData.currentPassword}
                     onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
-                    className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                     placeholder="Enter your current password"
                   />
                   <button
@@ -300,13 +300,13 @@ const Profile: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">New Password</label>
                 <div className="relative">
                   <input
                     type={showNewPassword ? 'text' : 'password'}
                     value={passwordData.newPassword}
                     onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
-                    className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                     placeholder="Enter your new password"
                   />
                   <button
@@ -334,13 +334,13 @@ const Profile: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Confirm New Password</label>
                 <div className="relative">
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
                     value={passwordData.confirmPassword}
                     onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
-                    className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                     placeholder="Confirm your new password"
                   />
                   <button
@@ -362,7 +362,7 @@ const Profile: React.FC = () => {
 
               <button
                 type="submit"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 flex items-center gap-2"
+                className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 flex items-center gap-2"
               >
                 <Lock className="w-4 h-4" />
                 Change Password

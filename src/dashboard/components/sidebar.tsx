@@ -5,7 +5,7 @@ import {
   Newspaper,
   Star,
   Briefcase,
-  
+
 } from "lucide-react";
 
 interface SidebarProps {
@@ -59,13 +59,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     <>
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-60 bg-gradient-to-b from-emsPurple via-emsBlue to-emsPurple border-r border-emsBlue/20 shadow-lg transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0`}
+        className={`fixed inset-y-0 left-0 z-50 w-60 bg-gray-500 border-r border-gray-400 shadow-lg transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0`}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="py-6 px-6 border-b border-emsWhite/10">
+          <div className="py-6 px-6 border-b border-gray-400">
             <span className="text-2xl font-bold text-white">Ems Rwanda</span>
           </div>
 
@@ -78,11 +77,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 onClick={onClose}
                 className={`flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-base transition-all duration-200 group
                   ${isActiveRoute(item.path)
-                    ? "bg-white text-emsBlue shadow border-l-4 border-emsBlue"
-                    : "text-emsWhite/90 hover:bg-emsBlue/20 hover:text-emsBlue"}
+                    ? "bg-white text-gray-700 shadow border-l-4 border-gray-600"
+                    : "text-gray-100 hover:bg-gray-400 hover:text-white"}
                 `}
               >
-                <span className={`transition-all duration-200 ${isActiveRoute(item.path) ? "text-emsBlue" : "text-emsWhite/80 group-hover:text-emsBlue"}`}>{item.icon}</span>
+                <span className={`transition-all duration-200 ${isActiveRoute(item.path) ? "text-gray-600" : "text-gray-200 group-hover:text-white"}`}>{item.icon}</span>
                 <span className="truncate">{item.label}</span>
               </Link>
             ))}
@@ -93,14 +92,14 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             <div className="mb-2">
               {/* Placeholder for illustration */}
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#7C3AED" fillOpacity="0.1"/>
-                <path d="M20 10L23 18H17L20 10Z" fill="#7C3AED"/>
-                <rect x="17" y="18" width="6" height="10" rx="2" fill="#6366F1"/>
+                <circle cx="20" cy="20" r="20" fill="#6B7280" fillOpacity="0.1" />
+                <path d="M20 10L23 18H17L20 10Z" fill="#6B7280" />
+                <rect x="17" y="18" width="6" height="10" rx="2" fill="#4B5563" />
               </svg>
             </div>
-            <div className="font-bold text-base text-emsPurple mb-1">Unlock Promotion</div>
+            <div className="font-bold text-base text-gray-600 mb-1">Unlock Promotion</div>
             <div className="text-xs text-gray-500 mb-3">Upgrade your plan to unlock advanced promotion features and grow your business faster.</div>
-            <a href="/dashboard/promotion" className="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-200">Upgrade Promotion</a>
+            <a href="/dashboard/promotion" className="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-lg hover:shadow-lg transition-all duration-200">Upgrade Promotion</a>
           </div>
         </div>
       </div>
@@ -116,4 +115,4 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   );
 };
 
-export default Sidebar; 
+export default Sidebar;
